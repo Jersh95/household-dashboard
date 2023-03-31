@@ -1,9 +1,12 @@
-import { Container, Image, Nav, Navbar } from "react-bootstrap";
+import { Container, Image, Nav, Navbar, NavItem } from "react-bootstrap";
 import styles from '@/styles/Navigation.module.scss'
+import { signOut, signIn, useSession } from 'next-auth/react'
 
 import Link from "next/link";
 
 const Navigation = ({ }) => {
+    const {data: session } = useSession();
+
     return (
         <>
             <Navbar bg="dark" variant="dark" expand={false} className={styles.Navigation}>
@@ -23,12 +26,17 @@ const Navigation = ({ }) => {
                     <Navbar.Toggle aria-controls="navbar-nav" />
                     <Navbar.Collapse id='navbar-nav'>
                         <Nav className='ms-auto'>
-                            <Nav.Item>
-                                <Link href='/login' className={styles.Navigation_link}>Sign In</Link>
-                            </Nav.Item>
-                            <Nav.Item>
-                                <Link href='/logout' className={styles.Navigation_link}>Sign Out</Link>
-                            </Nav.Item>
+                            {session ? (
+                                <Nav.Item>
+                                    <Link href='' onClick={signOut} className={styles.Navigation_link}>Sign Out</Link>
+                                </Nav.Item>
+                            ) : (
+                                <Nav.Item>
+                                    <Link href='' onClick={signIn} className={styles.Navigation_link}>Sign In</Link>
+                                </Nav.Item>
+                            )}
+                            
+                            
                         </Nav>
                     </Navbar.Collapse>
                 </Container>

@@ -48,3 +48,5 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 - [React](https://react.dev/learn) - React documentation.
 - [material-icons](https://www.npmjs.com/package/material-icons) - NPM package for Google's Material icons.
 - [BEM naming convention](https://medium.com/trabe/a-comprehensive-guide-to-using-bem-with-react-14d00c199e0d) - Article explaining BEM class naming convention.
+- [NextAuth](https://next-auth.js.org/getting-started/example) - Authentication manager.
+- [How To Implement Google Authentication With NextAuth](https://www.telerik.com/blogs/how-to-implement-google-authentication-nextjs-app-using-nextauth)
