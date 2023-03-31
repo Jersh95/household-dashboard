@@ -43,6 +43,7 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
 
 ## Reference Links
+- [Typescript](https://www.typescriptlang.org/) - Typescript documentation
 - [Bootstrap 5](https://getbootstrap.com/docs/5.0/getting-started/introduction/) - Bootstrap 5 documentation.
 - [React Bootstrap](https://react-bootstrap.github.io/getting-started/introduction) - Bootstrap 5 react framework.
 - [React](https://react.dev/learn) - React documentation.
