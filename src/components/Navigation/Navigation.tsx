@@ -1,10 +1,14 @@
-import { Container, Image, Nav, Navbar, NavItem } from "react-bootstrap";
-import styles from '@/styles/Navigation.module.scss'
+import { Container, Image, Nav, Navbar } from "react-bootstrap";
+// import styles from '../../Navigation.module.scss'
+import styles from '../../styles/Navigation.module.scss';
 import { signOut, signIn, useSession } from 'next-auth/react'
-
 import Link from "next/link";
 
-const Navigation = ({ }) => {
+type NavigationProps = {
+
+}
+
+export const Navigation = ({ }: NavigationProps): JSX.Element => {
     const {data: session } = useSession();
 
     return (
@@ -44,5 +48,3 @@ const Navigation = ({ }) => {
         </>
     )
 }
-
-export default Navigation;
