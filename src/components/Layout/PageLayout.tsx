@@ -7,7 +7,7 @@ type PageLayout = {
     title: string;
 }
 
-export const PageLayout = ({  title = 'Split', children}: React.PropsWithChildren<PageLayoutProps>): JSX.Element => {
+const PageLayout = ({  title = 'Split', children}: React.PropsWithChildren<PageLayoutProps>): JSX.Element => {
     return (
         <>
             <Head>
@@ -25,3 +25,5 @@ export const PageLayout = ({  title = 'Split', children}: React.PropsWithChildre
         </>
     );
 }
+
+export default PageLayout;
