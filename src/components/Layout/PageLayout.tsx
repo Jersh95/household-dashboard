@@ -1,9 +1,13 @@
 import Head from "next/head";
 import { Container } from "react-bootstrap";
-import Navigation from "../Navigation/Navigation";
-import styles from '@/styles/PageLayout.module.scss';
+import styles from '../../styles/PageLayout.module.scss';
+import { Navigation } from '../Navigation/Navigation';
 
-const PageLayout = ({ title = 'Split', children = <></>}) => {
+type PageLayout = {
+    title: string;
+}
+
+const PageLayout = ({  title = 'Split', children}: React.PropsWithChildren<PageLayoutProps>): JSX.Element => {
     return (
         <>
             <Head>
