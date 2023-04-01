@@ -3,7 +3,7 @@ import { Container } from "react-bootstrap";
 import styles from '../../styles/PageLayout.module.scss';
 import { Navigation } from '../Navigation/Navigation';
 
-type PageLayout = {
+type PageLayoutProps = {
     title: string;
 }
 
