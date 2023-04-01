@@ -1,15 +1,31 @@
 import { Container, Image, Nav, Navbar } from "react-bootstrap";
-// import styles from '../../Navigation.module.scss'
 import styles from '../../styles/Navigation.module.scss';
 import { signOut, signIn, useSession } from 'next-auth/react'
 import Link from "next/link";
+import FirestoreClient from "../../client/FirestoreClient";
+import { useEffect, useRef } from "react";
+import { Session } from "next-auth";
 
 type NavigationProps = {
 
 }
 
 export const Navigation = ({ }: NavigationProps): JSX.Element => {
-    const {data: session } = useSession();
+    const { data: session } = useSession();
+    const sessionSetRef = useRef(false);
+
+    useEffect(() => {
+        if (!sessionSetRef.current && session) {
+            sessionSetRef.current = true;
+            onSignIn(session);
+        }
+    }, [session]);
+
+    const firestoreClient = new FirestoreClient();
+
+    const onSignIn = async (session: Session) => {
+        await firestoreClient.createUser(session.user);
+    }
 
     return (
         <>
@@ -32,15 +48,15 @@ export const Navigation = ({ }: NavigationProps): JSX.Element => {
                         <Nav className='ms-auto'>
                             {session ? (
                                 <Nav.Item>
-                                    <Link href='' onClick={signOut} className={styles.Navigation_link}>Sign Out</Link>
+                                    <Link href='' onClick={() => signOut()} className={styles.Navigation_link}>Sign Out</Link>
                                 </Nav.Item>
                             ) : (
                                 <Nav.Item>
-                                    <Link href='' onClick={signIn} className={styles.Navigation_link}>Sign In</Link>
+                                    <Link href='' onClick={() => signIn()} className={styles.Navigation_link}>Sign In</Link>
                                 </Nav.Item>
                             )}
-                            
-                            
+
+
                         </Nav>
                     </Navbar.Collapse>
                 </Container>

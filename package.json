@@ -6,13 +6,13 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "stop_app": "/C TASKKILL /IM node.exe /F",
     "lint": "next lint"
   },
   "dependencies": {
     "bootstrap": "^5.2.3",
     "eslint": "8.36.0",
     "eslint-config-next": "13.2.4",
+    "firebase": "^9.19.1",
     "material-icons": "^1.13.3",
     "next": "13.2.4",
     "next-auth": "^4.20.1",
