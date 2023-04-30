@@ -52,3 +52,5 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 - [NextAuth](https://next-auth.js.org/getting-started/example) - Authentication manager.
 - [How To Implement Google Authentication With NextAuth](https://www.telerik.com/blogs/how-to-implement-google-authentication-nextjs-app-using-nextauth)
 - [Firebase](https://firebase.google.com/docs/firestore) - Database provider.
+- [Jest](https://jestjs.io/) - Javascript Testing Framework.
+- [Enzyme](https://enzymejs.github.io/enzyme/) - Javascript Testing utility for React.

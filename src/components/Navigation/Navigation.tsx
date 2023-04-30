@@ -2,9 +2,10 @@ import { Container, Image, Nav, Navbar } from "react-bootstrap";
 import styles from '../../styles/Navigation.module.scss';
 import { signOut, signIn, useSession } from 'next-auth/react'
 import Link from "next/link";
-import FirestoreClient from "../../client/FirestoreClient";
+import FirestoreClient from "@/client/FirestoreClient";
 import { useEffect, useRef } from "react";
 import { Session } from "next-auth";
+import { log } from "console";
 
 type NavigationProps = {
 
@@ -48,11 +49,11 @@ export const Navigation = ({ }: NavigationProps): JSX.Element => {
                         <Nav className='ms-auto'>
                             {session ? (
                                 <Nav.Item>
-                                    <Link href='' onClick={() => signOut()} className={styles.Navigation_link}>Sign Out</Link>
+                                    <Link id='signOut' href='' onClick={() => signOut()} className={styles.Navigation_link}>Sign Out</Link>
                                 </Nav.Item>
                             ) : (
                                 <Nav.Item>
-                                    <Link href='' onClick={() => signIn()} className={styles.Navigation_link}>Sign In</Link>
+                                    <Link id='signIn' href='' onClick={() => signIn()} className={styles.Navigation_link}>Sign In</Link>
                                 </Nav.Item>
                             )}
 

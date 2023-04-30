@@ -1,9 +1,11 @@
 {
   "compilerOptions": {
     "baseUrl": ".",
-    "paths": {
-      "@/*": ["./src/*"]
-    },
+        "paths": {
+            "@/*": [
+                "./src/*"
+            ]
+        },
     "outDir": "./dist/",
     "sourceMap": true,
     "noImplicitAny": true,
@@ -33,5 +35,5 @@
   ],
   "exclude": [
     "node_modules"
-  ]
+  ],
 }
