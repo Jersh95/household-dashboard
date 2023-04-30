@@ -5,7 +5,7 @@ const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
   return (
-    <PageLayout title='Split'>
+    <PageLayout title='Household Dashboard'>
       
     </PageLayout>
   )
