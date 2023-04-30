@@ -41,7 +41,7 @@ export const Navigation = ({ }: NavigationProps): JSX.Element => {
                                 height="30"
                                 className="d-inline-block align-top"
                             />{' '}
-                            Split
+                            Household Dashboard
                         </Navbar.Brand>
                     </Link>
                     <Navbar.Toggle aria-controls="navbar-nav" />

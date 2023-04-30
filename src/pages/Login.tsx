@@ -8,7 +8,7 @@ const inter = Inter({ subsets: ['latin'] })
 export default function Login() {
 
   return (
-      <PageLayout title={'Split - Login'}>
+      <PageLayout title={'Household Dashboard - Login'}>
         
       </PageLayout>
   )

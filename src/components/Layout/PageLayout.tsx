@@ -7,7 +7,7 @@ type PageLayoutProps = {
     title: string;
 }
 
-const PageLayout = ({  title = 'Split', children}: React.PropsWithChildren<PageLayoutProps>): JSX.Element => {
+const PageLayout = ({  title = 'Household Dashboard', children}: React.PropsWithChildren<PageLayoutProps>): JSX.Element => {
     
     return (
         <>
