@@ -1,67 +1,55 @@
-import { Container, Image, Nav, Navbar } from "react-bootstrap";
-import styles from '../../styles/Navigation.module.scss';
-import { signOut, signIn, useSession } from 'next-auth/react'
+import { Nav } from "react-bootstrap";
+import styles from "../../styles/Navigation.module.scss";
+import { signOut, signIn } from "next-auth/react";
 import Link from "next/link";
-import FirestoreClient from "@/client/FirestoreClient";
-import { useEffect, useRef } from "react";
-import { Session } from "next-auth";
-import { log } from "console";
+import { useContext } from "react";
+import { AppContext } from "@/context/AppContext";
 
-type NavigationProps = {
+type NavigationProps = {};
 
-}
+export const Navigation = ({}: NavigationProps): JSX.Element => {
+  const { user } = useContext(AppContext);
 
-export const Navigation = ({ }: NavigationProps): JSX.Element => {
-    const { data: session } = useSession();
-    const sessionSetRef = useRef(false);
-
-    useEffect(() => {
-        if (!sessionSetRef.current && session) {
-            sessionSetRef.current = true;
-            onSignIn(session);
-        }
-    }, [session]);
-
-    const firestoreClient = new FirestoreClient();
-
-    const onSignIn = async (session: Session) => {
-        await firestoreClient.createUser(session.user);
-    }
-
-    return (
-        <>
-            <Navbar bg="dark" variant="dark" expand={false} className={styles.Navigation}>
-                <Container fluid={true}>
-                    <Link href='/' className={styles.link}>
-                        <Navbar.Brand className='Navigation_brand'>
-                            <Image
-                                alt=""
-                                src="/favicon.ico"
-                                width="30"
-                                height="30"
-                                className="d-inline-block align-top"
-                            />{' '}
-                            Household Dashboard
-                        </Navbar.Brand>
-                    </Link>
-                    <Navbar.Toggle aria-controls="navbar-nav" />
-                    <Navbar.Collapse id='navbar-nav'>
-                        <Nav className='ms-auto'>
-                            {session ? (
-                                <Nav.Item>
-                                    <Link id='signOut' href='' onClick={() => signOut()} className={styles.Navigation_link}>Sign Out</Link>
-                                </Nav.Item>
-                            ) : (
-                                <Nav.Item>
-                                    <Link id='signIn' href='' onClick={() => signIn()} className={styles.Navigation_link}>Sign In</Link>
-                                </Nav.Item>
-                            )}
-
-
-                        </Nav>
-                    </Navbar.Collapse>
-                </Container>
-            </Navbar>
-        </>
-    )
-}
+  return (
+    <Nav
+      className="flex-column"
+      variant="pills"
+      justify
+      defaultActiveKey={"home"}
+    >
+      <Nav.Item>
+        <Nav.Link
+          eventKey="home"
+          id="home"
+          href="/"
+          className={styles.Navigation_link}
+        >
+          Dashboard
+        </Nav.Link>
+      </Nav.Item>
+      {user ? (
+        <Nav.Item>
+          <Link
+            id="signOut"
+            href=""
+            onClick={() => signOut()}
+            className={styles.Navigation_link}
+          >
+            Sign Out
+          </Link>
+        </Nav.Item>
+      ) : (
+        <Nav.Item>
+          <Link
+            id="signIn"
+            href=""
+            onClick={() => signIn()}
+            className={styles.Navigation_link}
+          >
+            Sign In
+          </Link>
+        </Nav.Item>
+      )}
+    </Nav>
+  );
+};
