@@ -1,9 +1,6 @@
-import FirestoreClient from "@/client/FirestoreClient";
+import HouseholdFirestoreClient from "@/client/HouseholdFirestoreClient";
 import { AppContext } from "@/context/AppContext";
-import { log } from "console";
-import { useSession } from "next-auth/react";
 import { useContext, useState } from "react";
-import { FormEventHandler } from "react";
 import { useRef } from "react";
 import { Button, FloatingLabel, Form } from "react-bootstrap";
 
@@ -11,7 +8,7 @@ type CreateHouseholdFormProps = {};
 
 export const CreateHouseholdForm =
   ({}: CreateHouseholdFormProps): JSX.Element => {
-    const firestoreClient = new FirestoreClient();
+    const householdFirestoreClient = new HouseholdFirestoreClient();
 
     const [validated, setValidated] = useState(false);
 
@@ -25,7 +22,11 @@ export const CreateHouseholdForm =
       setValidated(true);
       if (form.checkValidity()) {
         try {
-          const household = await firestoreClient.createHousehold(
+          console.log(
+            "creating with householdNameRef",
+            householdNameRef.current
+          );
+          const household = await householdFirestoreClient.createHousehold(
             user,
             householdNameRef.current.value
           );

@@ -5,7 +5,7 @@ import { Navigation } from "@/components/Navigation/Navigation";
 import { AppContextProvider } from "@/context/AppContext";
 
 type PageLayoutProps = {
-  title: string;
+  title?: string;
 };
 
 const PageLayout = ({

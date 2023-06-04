@@ -1,4 +1,4 @@
-import FirestoreClient from "@/client/FirestoreClient";
+import UserFirestoreClient from "@/client/UserFirestoreClient";
 import { Session } from "next-auth";
 import { useSession } from "next-auth/react";
 import { createContext, useEffect, useRef, useState } from "react";
@@ -16,7 +16,7 @@ export const AppContextProvider = ({
 }: {
   children: React.ReactNode;
 }) => {
-  const firestoreClient = new FirestoreClient();
+  const userFirestoreClient = new UserFirestoreClient();
 
   const { data: session } = useSession();
 
@@ -27,14 +27,14 @@ export const AppContextProvider = ({
 
   async function initialize(session: Session): Promise<void> {
     try {
-      const existingUser = await firestoreClient.getUserByEmail(
+      const existingUser = await userFirestoreClient.getUserByEmail(
         session.user.email
       );
 
       if (existingUser) {
         setUser(existingUser);
       } else {
-        const createdUser = await firestoreClient.createUser(session);
+        const createdUser = await userFirestoreClient.createUser(session);
         setUser(createdUser);
       }
     } catch (e) {

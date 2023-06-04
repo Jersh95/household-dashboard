@@ -1,4 +1,3 @@
-import FirestoreClient from "@/client/FirestoreClient";
 import { useSession } from "next-auth/react";
 import { useContext, useRef } from "react";
 import { Container, Row, Col, Button } from "react-bootstrap";
@@ -12,7 +11,11 @@ export const Household = ({}: HouseholdProps): JSX.Element => {
 
   return (
     <Container>
-      {user?.household ? <h1>Heya</h1> : <CreateHouseholdForm />}
+      {user?.household ? (
+        <h1>{user?.household?.name}</h1>
+      ) : (
+        <CreateHouseholdForm />
+      )}
     </Container>
   );
 };
