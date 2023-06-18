@@ -1,5 +1,7 @@
 interface User {
-    email: string;
-    name: string;
-    image: string;
+  userId: string;
+  email: string;
+  name: string;
+  image: string;
+  household: Household;
 }
