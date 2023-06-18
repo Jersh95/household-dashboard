@@ -13,6 +13,19 @@ const config = {
   testEnvironment: 'jest-environment-jsdom',
   moduleNameMapper: {
     '^@/components/(.*)$': '<rootDir>/components/$1',
+  },
+  collectCoverageFrom: [
+    'src/client/**',
+    'src/components/**',
+    'src/context/**',
+  ],
+  coverageThreshold: {
+    global: {
+      lines: 85,
+      statements: 85,
+      branches: 85,
+      functions: 85
+    }
   }
 }
 

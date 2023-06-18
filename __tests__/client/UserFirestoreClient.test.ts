@@ -16,7 +16,6 @@ import {
   WithFieldValue,
 } from "firebase/firestore";
 import { Session } from "next-auth";
-import { use } from "react";
 
 const mockCollection = jest.fn().mockImplementation(() => {});
 const mockWhere = jest.fn().mockImplementation(() => {});
@@ -74,7 +73,7 @@ const mockHouseholdFirestoreClient = {
   createHousehold: jest.fn(),
 };
 
-HouseholdFirestoreClient;
+// HouseholdFirestoreClient;
 jest.mock("../../src/client/HouseholdFirestoreClient", () => {
   return jest.fn().mockImplementation(() => {
     return mockHouseholdFirestoreClient;

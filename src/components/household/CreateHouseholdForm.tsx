@@ -17,15 +17,20 @@ export const CreateHouseholdForm =
     const { user } = useContext(AppContext);
 
     const onSubmit = async (e: React.FormEvent) => {
+      console.log("clicked submit");
       e.preventDefault();
       const form = e.currentTarget;
+      // console.log("form", form);
+      // console.log("target", e.currentTarget);
+      // console.log("checking", form.checkValidity());
       setValidated(true);
+      // console.log(
+      //   "householdNameRef.current.value",
+      //   householdNameRef.current.value
+      // );
       if (form.checkValidity()) {
         try {
-          console.log(
-            "creating with householdNameRef",
-            householdNameRef.current
-          );
+          console.log("trying");
           const household = await householdFirestoreClient.createHousehold(
             user,
             householdNameRef.current.value
@@ -37,7 +42,12 @@ export const CreateHouseholdForm =
     };
 
     return (
-      <Form onSubmit={onSubmit} noValidate validated={validated}>
+      <Form
+        id="createHouseholdForm"
+        onSubmit={onSubmit}
+        noValidate
+        validated={validated}
+      >
         <Form.Group>
           <FloatingLabel
             controlId="householdName"
@@ -55,7 +65,9 @@ export const CreateHouseholdForm =
             </Form.Control.Feedback>
           </FloatingLabel>
         </Form.Group>
-        <Button type="submit">Submit</Button>
+        <Button type="submit" id="createHouseholdButton">
+          Submit
+        </Button>
       </Form>
     );
   };
